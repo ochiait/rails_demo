@@ -1,0 +1,43 @@
+<h1>投稿一覧</h1>
+
+<div>
+  <%= link_to "記事の新規投稿", new_post_path %>
+</div>
+
+<div class="profile_list">
+  <table>
+    <theader>
+      <tr>
+        <th>画像</th><th>タイトル</th><th>投稿者</th><th>投稿日付</th><th>編集</th><th>削除</th>
+      </tr>
+    </theader>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td>
+            <%= link_to post_path(post) do %>
+              <%= image_tag post.image %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to post.title, post_path(post) %>
+          </td>
+          <td>
+            <%= link_to post.user.name, user_path(post.user) %>
+          </td>
+          <td>
+            <%= post.created_at.strftime("%Y年%-m月%-d日") %>
+          </td>
+          <td>
+            <%= link_to "編集", edit_post_path(post) if post.user_id == current_social_account.user_id %>
+          </td>
+          <td>
+            <%= link_to "削除", post_path(post), method: :delete if post.user_id == current_social_account.user_id %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <%= paginate @posts %>
+</div>

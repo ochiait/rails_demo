@@ -1,0 +1,36 @@
+<div class="profile">
+  <h1>プロフィール</h1>
+  <% if @user.image.present? %>
+    <div class="profile_image">
+      <%= image_tag @user.image('medium') %>
+    </div>
+  <% end %>
+  <div class="profile_detail">
+    <div class="label">ユーザー名</div>
+    <div class="value"><%= @user.name %></div>
+  </div>
+  <div class="profile_detail">
+    <div class="label">生年月日</div>
+    <div class="value"><%= @user.birthday %></div>
+  </div>
+  <% if @user.gender == "man" %>
+    <% date_format = "%Y%m%d" %>
+    <% birthday = @user.birthday.to_date %>
+    <% age = (Date.today.strftime(date_format).to_i - birthday.strftime(date_format).to_i) / 10000 %>
+    <div class="profile_detail">
+      <div class="label">年齢</div>
+      <div class="value"><%= age %></div>
+    </div>
+  <% end %>
+  <div class="profile_detail">
+    <div class="label">出身地</div>
+    <div class="value"><%= @user.hometown %></div>
+  </div>
+  <% if @user.remarks.present? %>
+    <div class="profile_detail">
+      <div class="label">ひとこと</div>
+      <div class="value"><%= @user.remarks %></div>
+    </div>
+  <% end %>
+</div>
+<%= link_to 'ユーザー一覧画面へ戻る', users_path %>

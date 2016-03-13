@@ -1,0 +1,23 @@
+<%= form_for @user do |f| %>
+  <div>
+    <%= f.file_field :image %>
+  </div>
+  <div>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.select :gender, User.genders.keys.to_a %>
+  </div>
+  <div>
+    <%= f.date_select :birthday, start_year: 1980, end_year: Date.today.year %>
+  </div>
+  <div>
+    <%= f.text_field :hometown %>
+  </div>
+  <div>
+    <%= f.text_area :remarks %>
+  </div>
+  <div>
+    <%= f.submit "送信" %>
+  </div>
+<% end %>

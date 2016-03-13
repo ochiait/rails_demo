@@ -1,0 +1,34 @@
+.profile_image img{
+  width: 150px;
+  height: auto;
+  border: solid 1px #999999;
+  border-radius: 5px;
+}
+
+.profile_detail {
+  margin-top: 15px;
+}
+
+.profile_detail:last-child {
+  margin-bottom: 30px;
+}
+
+.profile_detail .label{
+  color: #999999;
+}
+
+.profile_detail .value{
+  color: #333333;
+}
+
+.profile_list table {
+  border: 1px solid #666666;
+}
+
+.profile_list table th{
+  background-color: #EEEEEE;
+}
+
+.profile_list table td{
+  padding: 3px 5px;
+}

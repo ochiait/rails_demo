@@ -1,0 +1,14 @@
+<%= form_for @post do |f| %>
+  <div>
+    <%= f.file_field :image %>
+  </div>
+  <div>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.text_area :body %>
+  </div>
+  <div>
+    <%= f.submit "送信" %>
+  </div>
+<% end %>

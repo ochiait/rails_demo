@@ -1,0 +1,17 @@
+<h1>Top#index</h1>
+<p>Find me in app/views/top/index.html.erb</p>
+<% if social_account_signed_in? %>
+  <div>
+    <%= link_to '投稿一覧画面へ', posts_path %>
+  </div>
+  <div>
+    <%= link_to 'ユーザー一覧画面へ', users_path %>
+  </div>
+  <div>
+    <%= link_to 'ログアウト', sign_out_path %>
+  </div>
+<% else %>
+  <div>
+    <%= link_to 'Google認証', social_account_omniauth_authorize_path(:google_oauth2) %>
+  </div>
+<% end %>

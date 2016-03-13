@@ -1,0 +1,51 @@
+<h1>ユーザー一覧</h1>
+
+<div class="search_forms">
+  <%= form_tag(users_path, method: "get") do %>
+    <%= label_tag :name, "名前" %>
+    <%= text_field_tag :name, params[:name], class: "form_text" %>
+    <%= label_tag :name, "性別" %>
+    <%= select_tag :gender, options_for_select(User.genders), include_blank: true, class: "form_select" %>
+    <%= submit_tag "検索", class: "form_button" %>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "ユーザーの新規登録", new_user_path %>
+</div>
+
+<div class="profile_list">
+  <table>
+    <theader>
+      <tr>
+        <th>名前</th><th>性別</th><th>生年月日</th><th>出身</th><th>編集</th><th>削除</th></th>
+      </tr>
+    </theader>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user.name, user_path(user) %>
+          </td>
+          <td>
+            <%= user.gender %>
+          </td>
+          <td>
+            <%= user.birthday %>
+          </td>
+          <td>
+            <%= user.hometown %>
+          </td>
+          <td>
+            <%= link_to "編集", edit_user_path(user) %>
+          </td>
+          <td>
+            <%= link_to "削除", user_path(user), method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <%= paginate @users %>
+</div>

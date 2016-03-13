@@ -1,0 +1,25 @@
+<div class="profile">
+  <h1>記事内容</h1>
+  <% if @post.image.present? %>
+    <div class="profile_image">
+      <%= image_tag @post.image('medium') %>
+    </div>
+  <% end %>
+  <div class="profile_detail">
+    <div class="label">投稿者</div>
+    <div class="value"><%= @post.user.name %></div>
+  </div>
+  <div class="profile_detail">
+    <div class="label">投稿日時</div>
+    <div class="value"><%= @post.created_at.strftime("%Y年%-m月%-d日") %></div>
+  </div>
+  <div class="profile_detail">
+    <div class="label">タイトル</div>
+    <div class="value"><%= @post.title %></div>
+  </div>
+  <div class="profile_detail">
+    <div class="label">本文</div>
+    <div class="value"><%= @post.body %></div>
+  </div>
+  <%= link_to '投稿一覧画面へ戻る', posts_path %>
+</div>

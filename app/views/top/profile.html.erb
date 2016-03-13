@@ -1,0 +1,39 @@
+<div class="profile">
+  <h1>プロフィール</h1>
+  <div class="profile_image">
+    <%= image_tag 'noimage.png' %>
+  </div>
+  <div class="profile_detail">
+    <div class="label">ユーザー名</div>
+    <div class="value"><%= @user_name %></div>
+  </div>
+  <div class="profile_detail">
+    <div class="label">生年月日</div>
+    <div class="value"><%= @birthday %></div>
+  </div>
+  <% if @gender == "man" %>
+    <% date_format = "%Y%m%d" %>
+    <% birthday = @birthday.to_date %>
+    <% age = (Date.today.strftime(date_format).to_i - birthday.strftime(date_format).to_i) / 10000 %>
+    <div class="profile_detail">
+      <div class="label">年齢</div>
+      <div class="value"><%= age %></div>
+    </div>
+  <% end %>
+  <div class="profile_detail">
+    <div class="label">出身地</div>
+    <div class="value"><%= @hometown %></div>
+  </div>
+  <div class="profile_detail">
+    <% @skills.each do |skill| %>
+      <div class="label">特技</div>
+      <div class="value"><%= skill %></div>
+    <% end %>
+  </div>
+  <% if @remarks.present? %>
+    <div class="profile_detail">
+      <div class="label">ひとこと</div>
+      <div class="value"><%= @remarks %></div>
+    </div>
+  <% end %>
+</div>
